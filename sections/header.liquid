@@ -1,0 +1,47 @@
+{% include 'popout-search' %}
+
+<div class="header">
+	<div class="container-fluid">
+
+		<div class="header__navigation">
+
+			<div class="header__navigation__logo">
+				<a href="{{ shop.secure_url }}">
+					<img src="{{ 'logo.svg' | asset_url }}" alt="Castore"/>
+				</a>
+			</div>
+
+			<div class="header__navigation__links">
+				{% include 'header-nav-links' %}
+			</div>
+
+			<div class="header__navigation__actions">
+				<!-- Search -->
+				<a class="search-trigger">
+					{% include 'icon-search' %}
+				</a>
+
+				<!-- Account -->
+				{% if shop.customer_accounts_enabled %}
+					{% assign account_link = routes.account_url %}
+					{% unless customer %}
+						{% assign account_link = routes.account_login_url %}
+					{% endunless %}
+					<a href="{{ account_link }}">
+						{% include 'icon-account' %}
+					</a>
+				{% endif %}
+
+				<!-- Cart -->
+				<a href="{{ routes.cart_url }}" class="cart-link">
+					{% include 'icon-cart' %}
+					<div id="cartCount" class="cart-link__count{% if cart.item_count == 0 %} hide{% endif %}">
+						<span data-cart-count>{{ cart.item_count }}</span>
+					</div>
+				</a>
+			</div>
+
+		</div>
+
+	</div>
+</div>

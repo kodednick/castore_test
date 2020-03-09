@@ -1,0 +1,20 @@
+<div id="popout-search" class="search-bar">
+	<div class="container-fluid">
+
+		<div class="search-bar__inner">
+
+			<form action="{{ routes.search_url }}" method="get" role="search" class="search-bar__form">
+				<input type="text" name="q" placeholder="Search entire store here...">
+				<button>
+					{% include 'icon-search' %}
+				</button>
+			</form>
+
+			<a class="search-bar__close">
+				{% include 'icon-cross' %}
+			</a>
+
+		</div>
+
+	</div>
+</div>
